@@ -40,7 +40,7 @@ const SearchBar = () => {
                     }
                 }}
             />
-            <Button className="py-1" text="Search" size="md" type="primary" onClick={handleSearchMovie} />
+            <Button className="py-1" text="Search" size="md" type="primary" onClick={handleSearchMovie} circle />
         </div>
     );
 };

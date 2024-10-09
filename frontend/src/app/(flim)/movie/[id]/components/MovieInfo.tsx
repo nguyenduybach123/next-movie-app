@@ -7,6 +7,7 @@ import { defaultCastImage } from '@/assets';
 
 // Type
 import { CastType, MovieDetailType } from '@/types/types';
+import { Button } from '@/app/(flim)/components';
 
 type MovieInfoType = {
     detailMovie: MovieDetailType | null | undefined;
@@ -22,15 +23,23 @@ export const MovieInfo: FC<MovieInfoType> = ({ detailMovie, casts }) => {
             style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${detailMovie?.backdrop})` }}
         >
             <div className="flex items-start -mx-4 max-h-fit">
-                <div className="hidden md:block w-64 lg:w-96 px-4">
-                    <Image
-                        src={`https://image.tmdb.org/t/p/w500/${detailMovie?.poster}`}
-                        alt=""
-                        layout="responsive"
-                        width={500}
-                        height={750}
-                        className="w-full rounded-3xl"
-                    />
+                <div className="px-8">
+                    <div className="relative hidden md:block w-64 lg:w-96">
+                        <Image
+                            src={`https://image.tmdb.org/t/p/w500/${detailMovie?.poster}`}
+                            alt=""
+                            layout="responsive"
+                            width={500}
+                            height={750}
+                            className="w-full rounded-3xl"
+                        />
+                        <Button
+                            className="absolute inset-x-0 bottom-0 rounded-b-3xl"
+                            size="lg"
+                            type="primary"
+                            text="Watch movie"
+                        />
+                    </div>
                 </div>
                 <div className="px-4 flex-1 flex flex-col justify-between -my-2 lg:-my-4">
                     <h2 className="py-2 lg:py-4 font-bold text-white text-3xl md:text-5xl lg:text-7xl">

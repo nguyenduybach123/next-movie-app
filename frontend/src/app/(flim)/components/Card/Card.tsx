@@ -31,6 +31,7 @@ const Card: FC<CardType & { className?: string }> = ({ id, mode, title, poster, 
                     type="primary"
                     size="lg"
                     icon={<PlayIcon width={'16px'} height={'16px'} />}
+                    circle
                 />
             </div>
             <h3 className="font-medium text-white text-sm md:text-lg mt-4 transition duration-300 ease-in-out group-hover/container:text-red-main hover:text-red-main">

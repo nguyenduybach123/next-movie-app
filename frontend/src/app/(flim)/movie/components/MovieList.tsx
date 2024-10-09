@@ -56,7 +56,14 @@ export const MovieList: FC<MovieListType> = ({ movies, isFetching, fetchNextPage
             </div>
             {hasNextPage && (
                 <div className="flex items-center justify-center mt-8">
-                    <Button text="Watch more" size="sm" ghost onClick={() => fetchNextPage()} loading={isFetching} />
+                    <Button
+                        text="Watch more"
+                        size="sm"
+                        ghost
+                        onClick={() => fetchNextPage()}
+                        loading={isFetching}
+                        circle
+                    />
                 </div>
             )}
         </>

@@ -59,7 +59,14 @@ export const TVSeriesList: FC<TVSeriesType> = ({ tvseries, isFetching = false, h
             </div>
             <div className="flex items-center justify-center mt-8">
                 {hasNextPage ? (
-                    <Button text="Watch more" size="sm" ghost onClick={() => fetchNextPage()} loading={isFetching} />
+                    <Button
+                        text="Watch more"
+                        size="sm"
+                        ghost
+                        onClick={() => fetchNextPage()}
+                        loading={isFetching}
+                        circle
+                    />
                 ) : (
                     <></>
                 )}

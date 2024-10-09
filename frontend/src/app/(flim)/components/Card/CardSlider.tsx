@@ -86,7 +86,7 @@ const CardSlider: FC<CardSliderType> = ({ title, displayType, mode = 'movie', si
             <div className="flex justify-between items-center">
                 <span className="text-white font-medium text-lg md:text-2xl">{title}</span>
                 {!(displayType === DisplayEnum.Similar) && (
-                    <Button text="View more" size="sm" ghost to={`${mode}?type=${displayType}`} />
+                    <Button text="View more" size="sm" ghost to={`${mode}?type=${displayType}`} circle />
                 )}
             </div>
             <Swiper

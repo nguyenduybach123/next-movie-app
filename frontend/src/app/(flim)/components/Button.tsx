@@ -9,6 +9,7 @@ import { BaseSpinner } from './Spinner';
 // Type
 type ButtonType = {
     text?: string;
+    circle?: boolean;
     size?: 'sm' | 'md' | 'lg';
     icon?: React.ReactNode;
     ghost?: boolean;
@@ -23,6 +24,7 @@ type ButtonType = {
 const Button: FC<ButtonType> = ({
     text,
     size = 'md',
+    circle = false,
     type = 'default',
     icon,
     ghost = false,
@@ -37,7 +39,6 @@ const Button: FC<ButtonType> = ({
             <Link
                 className={cn(
                     'flex justify-center items-center',
-                    'rounded-full',
                     'transition-all duration-300',
                     'ease-in-out',
                     {
@@ -45,6 +46,7 @@ const Button: FC<ButtonType> = ({
                         'btn-md': size === 'md',
                         'btn-sm': size === 'sm',
                         'btn-ghost': ghost,
+                        'rounded-full': circle,
                         'btn-primary': type === 'primary',
                     },
                     className,
@@ -61,7 +63,6 @@ const Button: FC<ButtonType> = ({
         <button
             className={cn(
                 'flex justify-center items-center',
-                'rounded-full',
                 'transition-all duration-300',
                 'ease-in-out',
                 {
@@ -70,6 +71,7 @@ const Button: FC<ButtonType> = ({
                     'btn-sm': size === 'sm',
                     'btn-ghost': ghost,
                     'btn-primary': type === 'primary',
+                    'rounded-full': circle,
                     'bg-white text-[#FF0000]': loading,
                 },
                 className,
