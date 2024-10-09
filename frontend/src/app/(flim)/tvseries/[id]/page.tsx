@@ -18,7 +18,7 @@ interface TVSeriesDetailPageProps {
 }
 
 // Component
-export const TVSeriesDetailPage: FC<TVSeriesDetailPageProps> = ({ params }) => {
+const TVSeriesDetailPage: FC<TVSeriesDetailPageProps> = ({ params }) => {
     const { id } = params;
 
     // Queries

@@ -1,6 +1,6 @@
 'use client';
 // Core
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
 
@@ -12,7 +12,7 @@ import { MovieList } from './components';
 
 // Type
 import { DisplayEnum, MovieResponseType, QueryMovieParamType } from '@/types/types';
-import { NotFoundQuery, NotFoundResult, SearchBar } from '../components';
+import { Loading, NotFoundQuery, NotFoundResult, SearchBar } from '../components';
 
 const defaultMovies: InfiniteData<MovieResponseType[], unknown> = {
     pages: [],
@@ -20,10 +20,20 @@ const defaultMovies: InfiniteData<MovieResponseType[], unknown> = {
 };
 
 // Component
-export const MoviesPage = () => {
+const MoviesPage = () => {
     // States
     const searchParams = useSearchParams();
-    // Queries
+
+    // Bọc đoạn logic phụ thuộc vào useSearchParams trong Suspense
+    return (
+        <Suspense fallback={<Loading />}>
+            <MoviesPageContent searchParams={searchParams} />
+        </Suspense>
+    );
+};
+
+// Tách phần logic phụ
+const MoviesPageContent = ({ searchParams }: { searchParams: URLSearchParams }) => {
     let queryParams: QueryMovieParamType = {
         key: ['movies'],
         fn: getMovies,
@@ -54,7 +64,6 @@ export const MoviesPage = () => {
         queryKey: [...queryParams.key],
         queryFn: async ({ pageParam = 1 }) => {
             const response = await queryParams.fn(pageParam);
-
             return response;
         },
         getNextPageParam: (lastpage, pages) => {
@@ -70,7 +79,7 @@ export const MoviesPage = () => {
         },
     });
 
-    // Effefects
+    // Effects
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

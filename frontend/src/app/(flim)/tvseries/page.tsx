@@ -1,24 +1,35 @@
 'use client';
 // Core
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
 import { TVSeriesList } from './components';
 import { useSearchParams } from 'next/navigation';
 
 // App
 import { getTVSeries } from '@/service/tvSeries';
-import { NotFoundQuery, NotFoundResult, SearchBar } from '../components';
+import { Loading, NotFoundQuery, NotFoundResult, SearchBar } from '../components';
 
 // Type
 import { DisplayEnum, MovieResponseType, QueryTVSeriesParamType } from '@/types/types';
+
 const defaultTVSeries: InfiniteData<MovieResponseType[], unknown> = {
     pages: [],
     pageParams: [],
 };
 
 // Component
-export const TVSeriesPage = () => {
+const TVSeriesPage = () => {
     const searchParams = useSearchParams();
+
+    return (
+        <Suspense fallback={<Loading />}>
+            <TVSeriesPageContent searchParams={searchParams} />
+        </Suspense>
+    );
+};
+
+// Tách phần logic phụ, thêm kiểu cho searchParams
+const TVSeriesPageContent = ({ searchParams }: { searchParams: URLSearchParams }) => {
     // Queries
     let queryParams: QueryTVSeriesParamType = {
         key: ['tvseries'],
@@ -51,7 +62,6 @@ export const TVSeriesPage = () => {
         queryKey: [...queryParams.key],
         queryFn: async ({ pageParam = 1 }) => {
             const response = await queryParams.fn(pageParam);
-
             return response;
         },
         getNextPageParam: (lastpage, pages) => {
@@ -68,7 +78,6 @@ export const TVSeriesPage = () => {
     });
 
     // Effect
-    // * sync scroll to top
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

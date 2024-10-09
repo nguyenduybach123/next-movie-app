@@ -21,7 +21,7 @@ interface MovieDetailPageProps {
 }
 
 // Component
-export const MovieDetailPage: FC<MovieDetailPageProps> = ({ params }) => {
+const MovieDetailPage: FC<MovieDetailPageProps> = ({ params }) => {
     const { id } = params;
 
     // Queries
