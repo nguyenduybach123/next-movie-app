@@ -28,6 +28,7 @@ const HomePage = () => {
     } = useQuery({
         queryKey: ['banner'],
         queryFn: getBannerMovies,
+        refetchOnWindowFocus: false,
     });
 
     // * fetch data trailer
@@ -39,6 +40,7 @@ const HomePage = () => {
         queryKey: ['trailer'],
         queryFn: () => getVideoBannerById(idBannerSelected),
         enabled: isOpenDialogTrailer,
+        refetchOnWindowFocus: false,
     });
 
     // Templates

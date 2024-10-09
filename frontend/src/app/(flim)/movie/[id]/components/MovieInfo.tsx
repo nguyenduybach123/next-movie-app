@@ -34,7 +34,7 @@ export const MovieInfo: FC<MovieInfoType> = ({ detailMovie, casts }) => {
                             className="w-full rounded-3xl"
                         />
                         <Button
-                            className="absolute inset-x-0 bottom-0 rounded-b-3xl"
+                            className="absolute inset-x-0 bottom-0 rounded-b-3xl py-3"
                             size="lg"
                             type="primary"
                             text="Watch movie"

@@ -29,6 +29,7 @@ const TVSeriesDetailPage: FC<TVSeriesDetailPageProps> = ({ params }) => {
     } = useQuery({
         queryKey: ['tvseriesdetail', id],
         queryFn: () => getTVSeriesDetail(id as string),
+        refetchOnWindowFocus: false,
     });
 
     const tvId = tvDetail?.id;
@@ -46,6 +47,7 @@ const TVSeriesDetailPage: FC<TVSeriesDetailPageProps> = ({ params }) => {
     } = useQuery({
         queryKey: ['tvseriesintroduce', tvId],
         queryFn: () => getTVSeriesIntroduce(id as string),
+        refetchOnWindowFocus: false,
     });
 
     // Effects

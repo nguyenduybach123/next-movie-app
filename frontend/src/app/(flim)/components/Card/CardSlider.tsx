@@ -70,6 +70,7 @@ const CardSlider: FC<CardSliderType> = ({ title, displayType, mode = 'movie', si
     const { data: cards, isError } = useQuery({
         queryKey: ['cards', mode, displayType],
         queryFn: getCards,
+        refetchOnWindowFocus: false,
     });
 
     // Templates

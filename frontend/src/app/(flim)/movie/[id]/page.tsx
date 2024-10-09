@@ -33,6 +33,7 @@ const MovieDetailPage: FC<MovieDetailPageProps> = ({ params }) => {
     } = useQuery({
         queryKey: ['detail', id],
         queryFn: () => getMovieDetail(id),
+        refetchOnWindowFocus: false,
     });
 
     const movieId = movieDetail?.id;
@@ -41,6 +42,7 @@ const MovieDetailPage: FC<MovieDetailPageProps> = ({ params }) => {
         queryKey: ['casts', movieId],
         queryFn: () => getMovieCast(movieId),
         enabled: !!movieId,
+        refetchOnWindowFocus: false,
     });
 
     const {
@@ -51,6 +53,7 @@ const MovieDetailPage: FC<MovieDetailPageProps> = ({ params }) => {
     } = useQuery({
         queryKey: ['videointroduce', movieId],
         queryFn: () => getMovieIntroduce(id),
+        refetchOnWindowFocus: false,
     });
 
     // Effect
