@@ -4,7 +4,6 @@ import { FC, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 // App
-import { CardSlider } from '../../components/Card/CardSlider';
 
 // Internal
 import { getMovieCast, getMovieDetail, getMovieIntroduce } from '@/service/movie';
@@ -12,7 +11,7 @@ import { MovieInfo, MovieIntroduce } from './components';
 
 // Type
 import { DisplayEnum } from '@/types/types';
-import { Loading } from '../../components';
+import { CardSlider, Loading } from '../../components';
 
 interface MovieDetailPageProps {
     params: {

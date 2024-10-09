@@ -8,6 +8,7 @@ import { defaultCastImage } from '@/assets';
 // Type
 import { CastType, MovieDetailType } from '@/types/types';
 import { Button } from '@/app/(flim)/components';
+import MovieReview from './MovieReview';
 
 type MovieInfoType = {
     detailMovie: MovieDetailType | null | undefined;
@@ -45,11 +46,12 @@ export const MovieInfo: FC<MovieInfoType> = ({ detailMovie, casts }) => {
                     <h2 className="py-2 lg:py-4 font-bold text-white text-3xl md:text-5xl lg:text-7xl">
                         {detailMovie?.title}
                     </h2>
+                    <MovieReview />
                     <ul className="flex items-center p-4">
                         {detailMovie?.genres.map((genre) => (
                             <li
                                 key={genre.id}
-                                className="bg-black-main border-2 border-white rounded-full text-sm p-2 mr-2"
+                                className="bg-black-main border-2 text-white border-white rounded-full text-sm px-3 py-2 mr-2"
                             >
                                 {genre.name}
                             </li>
